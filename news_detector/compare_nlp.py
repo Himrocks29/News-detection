@@ -1,52 +1,50 @@
 import textdistance
-from textblob import TextBlob
-from django.shortcuts import render
-from django.http import HttpResponse
-from nltk.stem import WordNetLemmatizer 
+import spacy 
   
 lst = []
 decision = []
 def compare(s_inp, s_out):
-	lem_inp = []
-	lem_out = []
-	lem_inp.clear()
-	lem_out.clear()
+	'''nlp = spacy.load("en_core_web_sm")
+	str_inp = nlp(s_inp)
+	srt_inp = " ".join([token.lemma_ for token in str_inp])
+	#print(str_inp)
+	#inp_lower = str_inp.lower()
+	print("Lower String Input: {}".format(str_inp))
+	str_out = nlp(s_out)
+	srt_out = " ".join([token.lemma_ for token in str_out])
+	#print(str_out)
+	#out_lower = str_out.lower()
+	print("Lower String Output: {}".format(str_out))
 	#print("Inside Compare")
 	#print("Str1: ", s_inp)
-	#print("Str2: ", s_out)
-	lemma = WordNetLemmatizer() 
-	token_inp = s_inp.split()
+	#print("Str2: ", s_out)'''
 	
-	token_out = s_out.split()
 
-	for i in range(len(token_inp)):
-		lem = lemma.lemmatize(token_inp[i])
-		lem_inp.append(lem)
-	for j in range(len(token_out)):
-		lem = lemma.lemmatize(token_out[j])
-		lem_out.append(lem)
 	#Jaccard Index
-	jacc = textdistance.jaccard(lem_inp, lem_out)
-	#print("jaccard: ", jacc)
+	jacc = textdistance.jaccard(s_inp, s_out)
+	print("jaccard: ", jacc)
 	
 	#Sorens
-	soren = textdistance.sorensen(lem_inp, lem_out)
-	#print("Sorensen: ", soren)
+	soren = textdistance.sorensen(s_inp, s_out)
+	print("Sorensen: ", soren)
 	
 	#TVR Value
-	tvr = textdistance.tversky(lem_inp, lem_out)
-	#print("Tversky: ", tvr)
+	tvr = textdistance.tversky(s_inp, s_out)
+	print("Tversky: ", tvr)
 	
 	#Over Lap Index
-	overlap = textdistance.overlap(lem_inp, lem_out)
-	#print("overlap_cofficient: ", overlap)
+	overlap = textdistance.overlap(s_inp, s_out)
+	print("overlap_cofficient: ", overlap)
 	
 	#Tanimoto Distance
-	tanimoto_distance = textdistance.tanimoto(lem_inp, lem_out)
+	#tanimoto_distance = textdistance.tanimoto(str_inp, str_out)
 	#print("Tanimoto: ", tanimoto_distance)
 
 	res = (jacc+soren+tvr+overlap)/4
-	lst.append(res)
+	if res == 0:
+		pass
+	else:
+		lst.append(res)
 	print("Result: {}".format(res))
 	'''if (res >= 0.6):
 		print("News Your Searched was True")
@@ -56,9 +54,9 @@ def compare(s_inp, s_out):
 
 def avrg():
 	
-	print("Enter Average Block")
+	#print("Enter Average Block")
 	print("List Length: ",len(lst))
-	print("content of list: ",lst)
+	#print("content of list: ",lst)
 	add = 0
 	for i in range(len(lst)):
 		add = add + lst[i]
@@ -80,5 +78,6 @@ def avrg():
 		decision.append("News You Searched was likely fake")
 	else:
 		decision.append("News You Search Was Fake")	
-	print("Exit Average Block")
-	
+	#print("Exit Average Block")
+	return avg
+

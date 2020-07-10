@@ -1,0 +1,405 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Lobster&family=Lobster+Two&display=swap" rel="stylesheet">  <title>About Us</title>
+  <style type="text/css">
+     h1{
+      font-family: 'Lobster', cursive;
+      font-size: 150px;
+      color: black;
+      margin-top: -350px;
+      margin-left: 100px;
+    }
+    #Intro{
+      font-family: 'Lobster Two', cursive;
+      font-size: 100px;
+      color:white;
+      margin-top: -150px;
+      background-color: red; 
+      height: 200px;
+      width: 120  0px;
+    }
+    #TeamIntro{
+      margin-top: 134px;
+    }
+    .flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  margin-top: -135px;
+  margin-left: 20px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+#one{
+  margin-left: 320px;
+  margin-top: -300px;
+}
+#two{
+  margin-left: 620px;
+  margin-top: -300px;
+}
+#three{
+  margin-left: 920px;
+  margin-top: -300px;
+}
+#four{
+  margin-top: 00px;
+}
+#five{
+  margin-top: -300px;
+  margin-left: 320px;
+}
+#six{
+margin-top: -300px;
+margin-left: 620px;
+}
+
+#seven{
+margin-top: -300px;
+margin-left: 920px;
+}
+#eight{
+margin-top: 00px;
+margin-left: 620px;
+}
+#nine{
+margin-top: -300px;
+margin-left: 320px;
+}
+         html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+}
+
+body {
+      font-family: "Helvetica Neue",sans-serif;
+      font-weight: lighter;
+}
+
+header {
+      width: 100%;
+      height: 100vh;
+      background: url({% static 'Abou.jpg'%}) no-repeat 50% 50%;
+      background-size: cover;
+}
+
+.content {
+      width: 94%;
+      margin: 4em auto;
+      font-size: 12px;
+      line-height: 30px;
+      text-align: justify;
+}
+
+.logo {
+      line-height: 60px;
+      position: fixed;
+      float: left;
+      margin: 16px 46px;
+      color: #fff ;
+      font-weight: bold;
+      font-size: 25px;
+      letter-spacing: 2px;
+}
+
+nav {
+      position: fixed;
+      width: 100%;
+      line-height: 60px;
+}
+
+nav ul {
+      line-height: 60px;
+      list-style: none;
+      background: rgba(0, 0, 0, 0);
+      overflow: hidden;
+      color: #ff0000;
+      padding: 0;
+      text-align: right;
+      margin: 0;
+      padding-right: 30px;
+      transition: 1s;
+}
+
+nav.black ul {
+      background: #000;
+}
+
+nav ul li {
+      display: inline-block;
+      padding: 16px 40px;;
+}
+
+nav ul li a {
+      text-decoration: none;
+      color:#fff;
+      font-size: 20px;
+}
+
+.menu-icon {
+      line-height: 60px;
+      width: 100%;
+      background: #000;
+      text-align: right;
+      box-sizing: border-box;
+      padding: 15px 24px;
+      cursor: pointer;
+      color: #fff;
+      display: none;
+}
+
+@media(max-width: 786px) {
+
+      .logo {
+            position: fixed;
+            top: 0;
+            height: 100px;
+            width: 100px;
+            border-radius: 100px
+            background:#1d749a;
+
+      }
+
+      nav ul {
+            max-height: 0px;
+            background: #000;
+      }
+
+      nav.black ul {
+            background: #000;
+      }
+
+      .showing {
+            max-height: 34em;
+      }
+
+      nav ul li {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 24px;
+            text-align: center;
+      }
+
+      .menu-icon {
+            display: block;
+      }
+
+}
+
+</style>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Fake News No More </title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+            $(document).ready(function() {
+            $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+            });
+      });
+
+      // Scrolling Effect
+
+      $(window).on("scroll", function() {
+            if($(window).scrollTop()) {
+                  $('nav').addClass('black');
+            }
+
+            else {
+                  $('nav').removeClass('black');
+            }
+      })
+</script>
+</head>
+<body>
+  <center>
+     <div class="wrapper">
+         <header>
+            <nav>
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo">
+               Fake News No More 
+               </div>
+               <div class="menu">
+                  <ul>
+                     <li><b><a href="Index.html">Home</a></li>
+                     <li><a href="AboutUs.html">About Us</a></li>
+                     <li><a href="Search.html">Verify News</a></li>
+                     <li><a href="analyse">Analyze</a></b></li>
+                  </ul>
+               </div>
+            </nav>
+         </header>
+         <div class="content">
+          <div id="TeamIntro">
+  <div class="flip-card">
+     <div class="flip-card-inner">
+       <div class="flip-card-front">
+         <img src="{% static 'image.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+     <div class="flip-card-back">
+      <p>Pranjal Singh</p>
+      <p>
+        Hi my name is Pranjal Singh. I am in 9th grade and studying in The Shri Ram School, Aravalli. I am 13 years old. I have done certified courses by companies like IBM and Google. I have been selected for the IBM Partners program. I have knowledge in Python,Web designing, AI and Machine Learning. Though cyber security is somewhat new to me computer Science is something that I really like learning. 
+      </p> 
+     </div>
+  </div>
+</div>
+
+<div class="flip-card"  id="one">
+     <div class="flip-card-inner">
+       <div class="flip-card-front">
+         <img src="{% static 'AmeyIntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+     <div class="flip-card-back">
+      <p>Amey Raja</p>
+      <p>Hello Everyone, 
+My name is Amey Raje and I have completed my CEH from Ec-Council. and Im Currently Working as a Cybercrime Expert and CDR & Dump data analyst at Maharashtra Police.</p> 
+     </div>
+  </div>
+</div>
+
+<div class="flip-card" id="two">
+     <div class="flip-card-inner">
+       <div class="flip-card-front">
+         <img src="{% static 'ShivangiIntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+     <div class="flip-card-back">
+      <p>Shivangi Sharma</p>
+      <p>Hello, I'm Shivangi Sharma. I am a digital forensics evidence examiner, may be not the best but certainly the coolest. I do what i like. Thankyou for taking the time to visit:)</p> 
+     </div>
+  </div>
+</div>
+
+<div class="flip-card" id="three">
+     <div class="flip-card-inner">
+       <div class="flip-card-front">
+         <img src="{% static 'AkshatInntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+     <div class="flip-card-back">
+      <p>Akshat Bothra</p>
+      <p>Myself akshat bothra pursuing b. Tech 2nd year wd cyber security from svvv, indore, I'm a newbie in the cyber security field</p> 
+     </div>
+  </div>
+</div>
+
+<div class="flip-card" id="four">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="{% static 'TejasIntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p>Tejas Satpute<p> 
+      <p>Hello, This is Tejas Satpute . I am Cyber security Expert having Good Experience in Forensics and Malware Analysis also im expertise in AI and Cloud , Iot Security...
+Thanks for visit...</p> 
+    </div>
+  </div>
+</div>
+<div class="flip-card" id="five">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="{% static 'SachiIntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p>Sachi K Bhanushali<p> 
+      <p>Myself Sachi Kunal Bhanushali, recently completed first year of Bsc Information Technology. I am a Star Certified Cyber Secure User (SCSU) and also have a Star Information Technology Essential (SITE) certification. Currently preparing for CompTIA N+ (Networking), Ethical Hacking Expert (EHE) and Red Hat Certified System Administrator (RHCSA) certifications</p> 
+    </div>
+  </div>
+</div>
+
+  <div class="flip-card" id="six">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="{% static 'RakshaIntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p>Raksha Nayak</p> 
+      <p>Myself Raksha Nayak i have completed my BTech in information technology from usha mittal institute of technology.I am very curious to know more about cybersecurity.</p> 
+    </div>
+  </div>
+</div>
+
+<div class="flip-card" id="seven">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="{% static 'SayanIntrp.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p>Sayan Chatterjee</p> 
+      <p>Hi, I am Sayan Chatterjee. Currently i am pursuing B.tech 4th year in CSE. I am newbie in this domain. But I am skilled in web application & network security. Also i am very curious to learn more about cyber security.</p> 
+    </div>
+  </div>
+</div>
+
+<div class="flip-card" id="eight">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="{% static 'Hardik.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p>Hardik Malik</p> 
+      <p>Hey guys, this is Hardik COE student currently pursuing B.Tech from NSIT, Delhi and I like to learn new things.</p> 
+    </div>
+  </div>
+</div>
+<div class="flip-card" id="nine">
+     <div class="flip-card-inner">
+       <div class="flip-card-front">
+         <img src="{% static 'HimanshuIntro.jpg'%}" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+     <div class="flip-card-back">
+      <p>Himanshu Sharma</p>
+      <p>Himanshu Sharma: 
+I'm a b.tech 3rd year (IT) student, persuing to have a career in Information security as a penetration tester and a digital forensics investigator.Currently working as a security Tool Developer in Shield tech info Sec solutions.
+Well verse to write scripts and programs using python language, and can write codes in some other languages like C, C++ as well. 
+With all this i have a bit of knowledge in ML(Image Processing),  DL and NLP. Love to travel, Drive and Interact with new people.</p> 
+</div>
+     </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

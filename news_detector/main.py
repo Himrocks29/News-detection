@@ -2,70 +2,52 @@ from . import nlp
 #from nlp import token
 from . import compare_nlp
 #from . import ht_scraper as ht
-from . import indiatoday_scraper as it
-from . import indianexpress_scraper as ie
 from django.shortcuts import render
 from django.http import HttpResponse
+from . import scraping
+from . import file_handle as fh
 
 
 def main(request):
-
-	it.content.clear()
-	it.heading.clear()
-	ie.content.clear()
-	ie.heading.clear()
+	scraping.content.clear()
+	scraping.heading.clear()
 	compare_nlp.lst.clear()
 	compare_nlp.decision.clear()
 	#search = input("Enter Search String: ")
 	search = request.POST['search']
-	n = nlp.processing(search)
-	key_inp = " "
-	key_inp = key_inp.join(nlp.lst)
-	#print("Final Search String: \n", key_inp)
-	it.scraping(key_inp)
-	ie.scraping(key_inp)
+	n = nlp.text_processing(search)
+	#print("Final Search String: \n", n)
+	scraping.it_scraping(n)
+	scraping.ie_scraping(n)
 
 
 	#print("Enter Compare Block in main")
-	if it.heading == '/0':
-		return
+	if len(scraping.heading) == 0:
+		return render(request, "Search.html", {'Heading': 'Result Not Found', 'Content': 'Result Not Found', 'Decision': 'Result Not Found'})
 	else: 
-		for i in range(len(it.heading)):
+		for i in range(len(scraping.heading)):
 			#nlp.lst.clear
-			print("IT heading len: ",len(it.heading))
-			n = nlp.processing(it.heading[i])
-			key_out = " "
-			key_out = key_out.join(nlp.lst)
+			print("Heading len: ",len(scraping.heading))
+			key_out = nlp.text_processing(scraping.heading[i])
 			#print("Final Out Put String: \n", key_out)
-			c = compare_nlp.compare(key_inp, key_out)
-	if ie.heading == '/0':
-		return
-	else:
-		for j in range(len(ie.heading)):
-			print("IE heading len: ",len(it.heading))
-			n = nlp.processing(ie.heading[j])
-			key_out = " "
-			key_out = key_out.join(nlp.lst)
-			#print("Final Out Put String: \n", key_out)
-			c = compare_nlp.compare(key_inp, key_out)
-	
-	
-	try:
+			compare_nlp.compare(n, key_out)
+		print("Exit Compare Block")
+	if len(compare_nlp.lst) == 0:
+		return render(request, "Search.html", {'Heading': scraping.heading[0], 'Content': scraping.content[0], 'Decision': "News You Searched was not True", 'percent':0})
+
+	else:	
+		comp = compare_nlp.avrg()
+		fh.handle(search, comp)
+		return render(request, "Search.html", {'Heading': scraping.heading[0], 'Content': scraping.content[0], 'Decision': compare_nlp.decision[0], 'percent':comp})
+	'''try:
 		compare_nlp.avrg()
-		if ie.heading == '/0':
-			return
-		else:
-			return render(request, "result.html", {'Heading': ie.heading[0], 'Content': ie.content[0], 'Decision': compare_nlp.decision[0]})
-		
-		if it.heading == '/0':
-			return
-		else:
-			return render(request, "result.html", {'Heading': it.heading[0], 'Content': it.content[0], 'Decision': compare_nlp.decision[0]})
-		
+
+		return render(request, "result.html", {'Heading': ie.heading[0], 'Content': ie.content[0], 'Decision': compare_nlp.decision[0]})
+
 	except IndexError:
 		return render(request, "result.html", {'Heading': 'Result Not Found', 'Content': 'Result Not Found', 'Decision': 'Result Not Found'})
 	except ZeroDivisionError:
 		return render(request, "result.html", {'Heading': 'Result Not Found', 'Content': 'Result Not Found', 'Decision': 'Result Not Found'})
 
-		print("Could Not Find Result Search Again")
+		#print("Could Not Find Result Search Again")'''
 #main()

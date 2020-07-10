@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Search Page</title>
+</head>
+<body>
+	<form action = "search" method='post'>
+		{% csrf_token %}
+		Enter Your Search Query: <input type="text" name="search">
+		<input type="submit" name="">
+	</form>
+</body>
+</html>
